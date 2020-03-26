@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
   	<h2>カテゴリー一覧</h2>
+  	<% @categories.each do |category| %>
+  	  <%= link_to category_path(category) do %>
+  	    <%= category.name %>(<%= category.topics.count %>)
+  	  <% end %>
+  	<% end %>
   </div>
 </div>

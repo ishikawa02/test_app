@@ -20,6 +20,8 @@ class TopicsController < ApplicationController
 	end
 
 	def show
+	  @topic = Topic.find(params[:id])
+	  @response = Response.new
 	end
 
 	private
