@@ -1,18 +1,30 @@
 <div class="container">
   <div class="row">
   	<h2>スレッド作成</h2>
+  	<%= notice %>
   	<div class="thread-form">
   		<%= form_for(@topic) do |f| %>
 
-  		<div class="form-group has-icon">
+  		<div class="form-group">
           <p>Title</p>
           <div><%= f.text_field :title, placeholder: "50文字まで", required: true %></div>
         </div>
-        <div class="form-group has-icon">
+        <div class="form-group">
           <div><%= f.text_area :body, size: "80x20", placeholder: "100文字まで", required: true %></div>
         </div>
+
+        <div>
+          <%= collection_check_boxes(:topic, :category_ids, Category.all, :id, :name) do |ff| %>
+        	<%= ff.label { ff.check_box + ff.text } %>
+          <% end %>
+        </div>
         <%= f.submit "作成", class: "btn btn-primary" %>
-　　　　<% end %>
+
+		<% end %>
+
+  	</div>
+  	<div class="category_select">
+  		<%= link_to "カテゴリー追加",new_category_path %>
   	</div>
   </div>
 </div>
