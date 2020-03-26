@@ -10,6 +10,32 @@
   </head>
 
   <body>
+    <header>
+      <div class="headline">
+        <% if user_signed_in? %>
+          <%= link_to topics_path do %>
+            <h2>TestApp</h2>
+          <% end %>
+        <% else %>
+          <h2>TestApp</h2>
+        <% end %>
+      </div>
+
+
+      <nav class="list">
+        <ul>
+        <% if user_signed_in? %>
+          <li class="list-item"><%= link_to "新規作成", new_topic_path %></li>
+          <li class="list-item"><%= link_to " logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="list-item"><%= link_to ' login', new_user_session_path %></li>
+          <li class="list-item"><%= link_to ' sign up', new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+
+    </header>
+
     <%= yield %>
   </body>
 </html>

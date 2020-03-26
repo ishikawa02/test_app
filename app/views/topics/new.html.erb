@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+  	<h2>スレッド作成</h2>
+  	<div class="thread-form">
+  		<%= form_for(@topic) do |f| %>
+
+  		<div class="form-group has-icon">
+          <p>Title</p>
+          <div><%= f.text_field :title, placeholder: "50文字まで", required: true %></div>
+        </div>
+        <div class="form-group has-icon">
+          <div><%= f.text_area :body, size: "80x20", placeholder: "100文字まで", required: true %></div>
+        </div>
+        <%= f.submit "作成", class: "btn btn-primary" %>
+　　　　<% end %>
+  	</div>
+  </div>
+</div>
