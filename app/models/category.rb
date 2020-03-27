@@ -3,5 +3,5 @@ class Category < ApplicationRecord
 	has_many :topics, through: :thread_categories
 
 	validates :name, uniqueness: true
-	validates :name, presence: true
+	validates :name, presence: true, length: { maximum: 10 }
 end

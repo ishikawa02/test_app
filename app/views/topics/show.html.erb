@@ -1,5 +1,46 @@
 <div class="container">
   <div class="row">
+  	<div class="col-xs-10">
+  	<div class="headline">
   	<h2><%= @topic.title %></h2>
+    </div>
+  		<table class="table">
+  			<tbody>
+  			  <tr>
+  			    <td width="18%"><%= @topic.created_at.strftime("%y/%m/%d %H:%M") %></td>
+  			    <td><%= @topic.body %></td>
+  			  </tr>
+  			  <% @responses.each do |response| %>
+  			  <tr>
+  				<td><%= response.created_at.strftime("%y/%m/%d %H:%M") %></td>
+  				<td><%= response.comment %></td>
+  			  </tr>
+  			  <% end %>
+  			</tbody>
+  		</table>
+  		<div class="page"><%= paginate @responses, class: "paginate" %></div>
+  		<div class="comment">
+          <%= form_for [@topic, @response] do |f| %>
+            <div class="topic-response">
+            <%= f.text_area :comment, placeholder: "200文字まで",:size=>"90x5"  %>
+            <%= f.submit "送信", class: "btn btn-primary" %>
+            </div>
+            <% end %>
+        </div>
+  	</div>
+    <div class="col-xs-2">
+      <p>スレッドカテゴリー</p>
+      <nav class="list">
+      <ul>
+        <% @topic.categories.each do |category| %>
+        <li>
+            <%= link_to category_path(category) do %>
+              <%= category.name %>
+            <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </nav>
+    </div>
   </div>
 </div>

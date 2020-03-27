@@ -1,11 +1,27 @@
 <div class="container">
   <div class="row">
-  	<h2><%= @category.name %></h2>
-  	<% @category.topics.each do |topic| %>
-      <%= link_to topic_path(topic) do %>
-  	    <%= topic.title %>
+  	<h2>カテゴリー：<%= @category.name %>のスレッド一覧</h2>
+  	<table class="table">
+  	  <thead>
+  		<tr>
+  	      <th style="text-align: center;">スレッド名</th>
+  	      <th>レス数</th>
+  		</tr>
+  	  </thead>
+  	  <% @category.topics.each do |topic| %>
+      <tbody>
+  		<tr>
+  	      <td>
+  	      	<%= link_to topic_path(topic) do %>
+  	          <%= truncate(topic.title, length: 60) %>
+  	        <% end %>
+  	      </td>
+  	      <td width="10%">
+  	      	<%= topic.responses.count %>
+  	      </td>
+  		</tr>
+  	  </tbody>
   	  <% end %>
-  	  <!-- レスポンス数 -->
-  	<% end %>
+  	</table>
   </div>
 </div>

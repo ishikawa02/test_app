@@ -1,8 +1,30 @@
 <div class="container">
   <div class="row">
   	<h2>スレッド一覧</h2>
-  	<% @topics.each do |topic| %>
-  	  <%= topic.title %>
-  	<% end %>
+  	  <table class="table">
+  	  	<thead>
+  	  		<tr>
+  	  			<th></th>
+  	  			<th></th>
+  	  			<th>レス数</th>
+  	  		</tr>
+  	  	</thead>
+  	  	<% @topics.each do |topic| %>
+  	  	<tbody>
+  	  		<tr>
+  	  			<td width="10%"><%= topic.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+  	  			<td>
+  	  			  <%= link_to topic_path(topic) do %>
+  	    		    <%= topic.title %>
+  	              <% end %>
+  	            </td>
+  	            <td width="10%"><%= topic.responses.count %>件</td>
+  	  		</tr>
+  	  		<tr>
+  	  		  <td colspan="3"><%= truncate(topic.body, length: 100) %></td>
+  	  		</tr>
+  	  	</tbody>
+  	  	<% end %>
+  	  </table>
   </div>
 </div>

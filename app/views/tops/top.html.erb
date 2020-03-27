@@ -1,1 +1,20 @@
-<h1>top</h1>
+<div class="container">
+  <div class="row">
+  	<h2 class="top-name">TestApp</h2>
+  	  <div class="col-xs-10 top">
+  	  	<% @topics.each do |topic| %>
+  	  	<table class="table table">
+  	  	  <tbody>
+  	  	    <tr>
+  	  		  <td width="20%"><%= topic.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+  	  		  <td><span class="top-title"><%= truncate(topic.title, length: 20) %></span></td>
+  	  		</tr>
+  	  		<tr>
+  	  		  <td colspan="2"><span class="top-body"><%= truncate(topic.body, length: 40) %></span></td>
+  	  		</tr>
+  	  	  </tbody>
+  	  	</table>
+  	  	<% end %>
+  	  </div>
+  </div>
+</div>

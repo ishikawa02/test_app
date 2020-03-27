@@ -21,6 +21,14 @@
         <% end %>
       </div>
 
+      <% if user_signed_in? %>
+      <div class="search">
+        <%= form_tag(search_path, :method => 'get') do %>
+          <%= text_field_tag :search, "", placeholder: "キーワード入力" %>
+          <%= submit_tag 'Search' %>
+        <% end %>
+      </div>
+      <% end %>
 
       <nav class="list">
         <ul>

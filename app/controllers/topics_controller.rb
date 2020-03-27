@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+before_action :authenticate_user!
 	def new
 	  @topic = Topic.new
 	  @topic.thread_categories.build
@@ -16,12 +17,13 @@ class TopicsController < ApplicationController
 	end
 
 	def index
-	  @topics = Topic.all
+	  @topics = Topic.page(params[:page]).reverse_order
 	end
 
 	def show
 	  @topic = Topic.find(params[:id])
 	  @response = Response.new
+	  @responses = @topic.responses.page(params[:page])
 	end
 
 	private

@@ -1,10 +1,18 @@
 <div class="container">
   <div class="row">
-  	<h2>カテゴリー一覧</h2>
-  	<% @categories.each do |category| %>
-  	  <%= link_to category_path(category) do %>
-  	    <%= category.name %>(<%= category.topics.count %>)
-  	  <% end %>
-  	<% end %>
+  	<div class="col-xs-10 category-index">
+  	  <h2>カテゴリー一覧</h2>
+  	    <nav>
+  	      <ul>
+  	  	  <% @categories.each do |category| %>
+  		    <li>
+  		      <%= link_to category_path(category) do %>
+  	            <%= category.name %>(<%= category.topics.count %>)
+  	          <% end %>
+  	        </li>
+  	      <% end %>
+  	      </ul>
+  	    </nav>
+  	</div>
   </div>
 </div>
