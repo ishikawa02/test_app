@@ -8,7 +8,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
       <div class="headline">
@@ -17,7 +16,9 @@
             <h2>TestApp</h2>
           <% end %>
         <% else %>
-          <h2>TestApp</h2>
+          <%= link_to root_path do %>
+            <h2>TestApp</h2>
+          <% end %>
         <% end %>
       </div>
 
@@ -35,16 +36,14 @@
         <% if user_signed_in? %>
           <li class="list-item"><%= link_to "カテゴリー一覧", categories_path %></li>
           <li class="list-item"><%= link_to "スレッド作成", new_topic_path %></li>
-          <li class="list-item"><%= link_to " logout", destroy_user_session_path, method: :delete %></li>
+          <li class="list-item"><%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li class="list-item"><%= link_to ' login', new_user_session_path %></li>
-          <li class="list-item"><%= link_to ' sign up', new_user_registration_path %></li>
+          <li class="list-item"><%= link_to "ログイン", new_user_session_path %></li>
+          <li class="list-item"><%= link_to "新規登録", new_user_registration_path %></li>
           <% end %>
         </ul>
       </nav>
-
     </header>
-
     <%= yield %>
   </body>
 </html>
